@@ -12,21 +12,40 @@ const outcomeText = document.querySelector(".outcome-text");
 // Assign the user's choice to a variable
 
 const getUserChoice = (event) => {
-  const userChoice = event.target.innerText;
-  return "User chose: " + userChoice;
+  return event.target.innerText;
 };
 
 // Generate a move for the computer
 
+const getCompChoice = () => {
+  const choices = ["Rock", "Paper", "Scissors"];
+  const index = Math.floor(Math.random() * 3);
+  computerChoice.innerText = choices[index];
+  return choices[index];
+};
+
 // Work out the winner
 
+const calculateWinner = (event) => {
+  const userChoice = getUserChoice(event);
+  const compChoice = getCompChoice();
+
+  // Check if there is a tie
+  if (userChoice === compChoice) {
+    return "It's a tie!";
+  }
+
+  // Else, check user choice
+
+  // Check if win or lose (depends on the computer choice)
+};
+
 // Display the winner
+function updateDOM(event) {
+  outcomeText.textContent = calculateWinner(event);
+}
 
 // Write a function to add an eventlistener to an element
-
-function updateDOM(event) {
-  outcomeText.textContent = getUserChoice(event);
-}
 
 userButtons.forEach((element) => {
   element.addEventListener("click", updateDOM);
