@@ -27,6 +27,12 @@ const getCompChoice = () => {
 // Work out the winner
 
 const calculateWinner = (event) => {
+  const winStates = {
+    Paper: "Rock",
+    Rock: "Scissors",
+    Scissors: "Paper",
+  };
+
   const userChoice = getUserChoice(event);
   const compChoice = getCompChoice();
 
@@ -35,9 +41,13 @@ const calculateWinner = (event) => {
     return "It's a tie!";
   }
 
-  // Else, check user choice
+  // Compare user and computer choice
 
-  // Check if win or lose (depends on the computer choice)
+  if (winStates[userChoice] === compChoice) {
+    return "You win!";
+  } else {
+    return "You lose!";
+  }
 };
 
 // Display the winner
